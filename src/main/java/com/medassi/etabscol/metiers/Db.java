@@ -28,7 +28,7 @@ public class Db {
 
     public static Db getDatabase() {
         if (baseMariadb == null) {
-            baseMariadb = new Db("192.168.153.10:3306", "etab_scol_fr", "sio", "sio");
+            baseMariadb = new Db("192.168.153.10:3306", "etab_scol_fr", "XXXXXXX", "XXXXXX");
         }
         return baseMariadb;
     }
