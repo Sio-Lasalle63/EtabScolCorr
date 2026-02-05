@@ -1,5 +1,6 @@
 package com.medassi.etabscol.metiers;
 
+import com.medassi.etabscol.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class Db {
 
     public static Db getDatabase() {
         if (baseMariadb == null) {
-            baseMariadb = new Db("192.168.153.10:3306", "etab_scol_fr", "XXXXXXX", "XXXXXX");
+            baseMariadb = new Db(Config.host, Config.dbname, Config.login, Config.password);
         }
         return baseMariadb;
     }

@@ -9,23 +9,23 @@ public class Datas {
     private static ObservableList<Academie> lesAcademies;
 
     private Datas() {
-        lesRegions = Db.getDatabase().extractRegionsFromDB();
-        lesAcademies = Db.getDatabase().extractAcademiesFromDB();
+        Datas.lesRegions = Db.getDatabase().extractRegionsFromDB();
+        Datas.lesAcademies = Db.getDatabase().extractAcademiesFromDB();
     }
 
     public static Datas getInstance() {
-        if (instance == null) {
-            instance = new Datas();
+        if (Datas.instance == null) {
+            Datas.instance = new Datas();
         }
-        return instance;
+        return Datas.instance;
     }
 
     public ObservableList<Region> getLesRegions() {
-        return lesRegions;
+        return Datas.lesRegions;
     }
 
     public static Region getRegionByCode(String codeR) {
-        for (Region r : lesRegions) {
+        for (Region r : Datas.lesRegions) {
             if (r.getCode().equals(codeR)) {
                 return r;
             }
