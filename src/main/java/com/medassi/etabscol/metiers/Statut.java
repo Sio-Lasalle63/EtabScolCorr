@@ -1,4 +1,3 @@
-
 package com.medassi.etabscol.metiers;
 
 public enum Statut {

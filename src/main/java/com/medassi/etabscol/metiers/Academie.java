@@ -1,5 +1,6 @@
 package com.medassi.etabscol.metiers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
@@ -13,6 +14,7 @@ public class Academie {
         this.code = code;
         this.libelle = libelle;
         this.laRegion = region ;
+        lesDepartements = FXCollections.observableArrayList() ;
     }
 
     public String getCode() {
