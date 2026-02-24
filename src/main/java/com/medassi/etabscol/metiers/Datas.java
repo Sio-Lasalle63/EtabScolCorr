@@ -8,6 +8,15 @@ public class Datas {
     private static ObservableList<Region> lesRegions;
     private static ObservableList<Academie> lesAcademies;
 
+    static Academie getAcademieByCode(String codeAca) {
+        for (Academie a : Datas.lesAcademies) {
+            if (a.getCode().equals(codeAca)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
     private Datas() {
         Datas.lesRegions = Db.getDatabase().extractRegionsFromDB();
         Datas.lesAcademies = Db.getDatabase().extractAcademiesFromDB();

@@ -15,9 +15,18 @@ public class Academie {
         this.laRegion = region ;
     }
 
+    public String getCode() {
+        return code;
+    }
+    
+
     @Override
     public String toString() {
         return libelle ;
+    }
+
+    public ObservableList<Departement> getLesDepartements() {
+        return lesDepartements;
     }
     
     

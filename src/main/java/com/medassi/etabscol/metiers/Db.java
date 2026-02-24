@@ -34,25 +34,7 @@ public class Db {
         return baseMariadb;
     }
 
-    public ObservableList<Academie> extractAcademiesFromDB() {
-        ObservableList<Academie> list = FXCollections.observableArrayList();
-        try {
-            ResultSet rs;
-            rs = statement.executeQuery("Select * from Academie");
-            while (rs.next()) {
-                String code = rs.getString("code");
-                String libelle = rs.getString("libelle");
-                String codeRegion = rs.getString("region_code");
-                Region laRegion = Datas.getRegionByCode(codeRegion);
-                Academie item = new Academie(code, libelle, laRegion);
-                laRegion.getLesAcademies().add(item);
-                list.add(item);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Db.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
+   
 
     public ObservableList<Region> extractRegionsFromDB() {
         ObservableList<Region> list = FXCollections.observableArrayList();
@@ -71,9 +53,45 @@ public class Db {
         
         return list;
     }
-
-    void blabla() {
-        System.out.println("Blabla");
+     public ObservableList<Academie> extractAcademiesFromDB() {
+        ObservableList<Academie> list = FXCollections.observableArrayList();
+        try {
+            ResultSet rs;
+            rs = statement.executeQuery("Select * from Academie");
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String libelle = rs.getString("libelle");
+                String codeRegion = rs.getString("region_code");
+                Region laRegion = Datas.getRegionByCode(codeRegion);
+                Academie item = new Academie(code, libelle, laRegion);
+                laRegion.getLesAcademies().add(item);
+                list.add(item);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Db.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
+      public ObservableList<Departement> extractDepartementsFromDB() {
+        ObservableList<Departement> list = FXCollections.observableArrayList();
+        try {
+            ResultSet rs;
+            rs = statement.executeQuery("Select * from Departement");
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String libelle = rs.getString("libelle");
+                String codeAca = rs.getString("academie_code");
+                Academie aca = Datas.getAcademieByCode(codeAca);
+                Departement item = new Departement(code, libelle, aca);
+                aca.getLesDepartements().add(item);
+                list.add(item);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Db.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+ 
 
 }
